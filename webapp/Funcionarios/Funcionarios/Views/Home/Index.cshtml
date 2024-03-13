@@ -1,8 +1,66 @@
-﻿@{
+﻿@using Funcionarios.Model
+@model IEnumerable<Funcionario>
+
+
+@{
     ViewData["Title"] = "Inicio";
 }
 
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h3 class="display-4">Funcionários</h3>
+    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>
+
+<div class="card">
+<div class="card-body">
+    <form class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="col-12">
+            <label for="Nome" class="sr-only">Nome</label>
+            <input type="text" class="form-control" id="Nome">
+        </div>
+        <div class="col-12">
+            <label for="CodCargo" class="sr-only">Cargo</label>
+            <select class="form-select" id="CodCargo">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-12">
+            <label for="Salario" class="sr-only">Salario</label>
+            <input type="number" class="form-control" id="Salario">
+        </div>
+        <div class="col-12">
+        <button type="submit" class="btn btn-primary mb-2">Salvar</button>
+        </div>
+    </form>
+</div>
+</div>
+
+<div class="container">
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">cod.</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Cargo</th>
+        <th scope="col">Salario R$</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th scope="row">@item.Codigo</th>
+            <td>@item.Nome</td>
+            <td>@item.Cargo</td>
+            <td>@item.ValorSalarioStr</td>
+            <td>actions</td>
+        </tr>
+    }
+    </tbody>
+</table>
 </div>

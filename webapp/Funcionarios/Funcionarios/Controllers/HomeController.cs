@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Funcionarios.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Funcionarios.Models;
 
@@ -7,15 +8,18 @@ namespace Funcionarios.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IFuncionarioService _service;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IFuncionarioService service)
     {
         _logger = logger;
+        _service = service;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        //ViewData["funcionarios"] = ;
+        return View(await _service.GetAll());
     }
 
     public IActionResult Privacy()
