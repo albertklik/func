@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "iXDreePmt23w1/Slz366NLDw6CpoK6hNUCtlqZoQ5xglkgChvCt3ES4tryFTY1tckej3U9vnunGh8+b43D1cMQ==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\Paulo\\Documents\\func\\database\\func\\func.sqlproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Paulo\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+    "C:\\Users\\Paulo\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net46\\1.0.0\\microsoft.netframework.referenceassemblies.net46.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
