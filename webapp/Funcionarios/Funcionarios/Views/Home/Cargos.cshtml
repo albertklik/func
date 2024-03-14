@@ -1,0 +1,64 @@
+﻿
+@using Funcionarios.Model
+@model IEnumerable<Cargo>
+
+@{
+    ViewData["Title"] = "Cargos";
+    var cargo = ViewData["cargo"] as Cargo ?? new();
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="card">
+          <div class="card-body">
+              
+              @using (Html.BeginForm(
+                  "CreateCargo",
+                  "Home",
+                  FormMethod.Post,
+                  new { @class = "row row-cols-lg-auto g-3 align-items-center" }))
+              {
+                  <input type="hidden" name="Codigo" id="Codigo" value="@cargo.Codigo" >
+                  <div class="col-12">
+                      <label for="Nome" class="sr-only">Nome</label>
+                      <input type="text" name="Nome" class="form-control" id="Nome" value="@cargo.Nome">
+                  </div>
+                  <div class="col-12">
+                      <label for="DescricaoCargo" class="sr-only">Descrição</label>
+                      <textarea class="form-control" maxlength="255" name="DescricaoCargo" id="DescricaoCargo">@cargo.DescricaoCargo</textarea>
+                  </div>
+                  <div class="col-12" style="margin-top: 45px">
+                      <button type="submit" class="btn btn-primary mb-2">Salvar</button>
+                  </div>
+                  <div class="col-12" style="margin-top: 45px">
+                  @Html.ActionLink("Cancelar", "Cargos")
+                  </div>
+              }
+          </div>
+      </div>
+      
+      <div class="container">
+      <table class="table">
+          <thead>
+          <tr>
+              <th scope="col">cod.</th>
+              <th scope="col">Nome</th>
+              <th colspan="2" scope="col">DescricaoCargo</th>
+              <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          @foreach (var item in Model)
+          {
+              <tr>
+                  <th scope="row">@item.Codigo</th>
+                  <td>@item.Nome</td>
+                  <td colspan="2">@item.DescricaoCargo</td>
+                  <td>
+                                  @Html.ActionLink("Edit", "EditCargo", new { codigo=item.Codigo }) |
+                                  @Html.ActionLink("Delete", "DeleteCargo", new { codigo=item.Codigo })
+                  </td>
+              </tr>
+          }
+          </tbody>
+      </table>
+      </div>

@@ -9,6 +9,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddSingleton<DatabaseConnection>();
 builder.Services.AddSingleton<IFuncionarioService, FuncionarioService>();
+builder.Services.AddSingleton<ICargoService, CargoService>();
 
 var app = builder.Build();
 

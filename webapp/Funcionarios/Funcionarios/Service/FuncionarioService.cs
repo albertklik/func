@@ -73,16 +73,17 @@ public class FuncionarioService: IFuncionarioService
         cmd.Parameters.AddWithValue("@codigo", codigo);
         cmd.CommandType = CommandType.Text;
         var result = await cmd.ExecuteReaderAsync();
-
-        result.Read();
-        var func = new Funcionario
+        var func = new Funcionario();
+        if (result.HasRows)
         {
-            Codigo = (int)result["codigo"],
-            Nome = result["nome"].ToString() ?? "",
-            Cargo = result["nomeCargo"].ToString() ?? "",
-            CodigoCargo = (int)result["cdcargo"],
-            ValorSalario = (decimal)result["valorSalario"]
-        };
+            result.Read();
+            func.Codigo = (int)result["codigo"];
+            func.Nome = result["nome"].ToString() ?? "";
+            func.Cargo = result["nomeCargo"].ToString() ?? "";
+            func.CodigoCargo = (int)result["cdcargo"];
+            func.ValorSalario = (decimal)result["valorSalario"];
+        }
+
         db.Close();
         return func;
     }
